@@ -1,0 +1,259 @@
+/* Change these colors and styles to match your organization. */
+:root {
+    --color-text: #292e33;
+    --color-muted: #60676e;
+    --color-primary: #4b535b;
+    --color-background: #e9ebed;
+    --color-surface: #f8f9fa;
+    --color-highlight: #5a6169;
+    --color-logo-border: #454c53;
+    --font-body: Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+.site-header,
+main,
+footer {
+    width: min(100% - 40px, 1040px);
+    margin-inline: auto;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-inline: max(20px, calc((100% - 1040px) / 2));
+    background: var(--color-background);
+    border-bottom: 1px solid #cbd0d4;
+    box-shadow: 0 2px 8px rgb(41 46 51 / 8%);
+    transition: transform 180ms ease;
+}
+
+.site-header.is-hidden {
+    transform: translateY(-110%);
+    pointer-events: none;
+}
+
+section[id] {
+    scroll-margin-top: 92px;
+}
+
+.site-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-text);
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.site-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+nav {
+    display: flex;
+    gap: 24px;
+}
+
+nav a {
+    color: var(--color-text);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--color-primary);
+}
+
+.intro {
+    min-height: 480px;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 56px;
+    padding-block: 64px;
+}
+
+.intro-copy {
+    max-width: 500px;
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+h1 {
+    margin-bottom: 18px;
+    font-size: clamp(38px, 5vw, 58px);
+}
+
+.intro-copy > p:not(.eyebrow),
+.mission > p:last-child,
+.contact > p {
+    color: var(--color-muted);
+}
+
+.button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 11px 18px;
+    border: 0;
+    border-radius: 5px;
+    background: var(--color-primary);
+    color: var(--color-surface);
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: #343a40;
+}
+
+.logo-area {
+    width: 100%;
+    max-width: 360px;
+    justify-self: end;
+}
+
+.logo-frame {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid var(--color-logo-border);
+    border-radius: 50%;
+    background: var(--color-highlight);
+}
+
+.logo-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.mission,
+.contact {
+    margin-bottom: 28px;
+    padding: 38px;
+    border-radius: 8px;
+    background: var(--color-surface);
+}
+
+.mission h2,
+.contact h2 {
+    margin-bottom: 12px;
+    font-size: 32px;
+}
+
+.mission > p:last-child,
+.contact > p {
+    max-width: 680px;
+    margin-bottom: 0;
+}
+
+footer {
+    padding-block: 18px 30px;
+    color: var(--color-muted);
+    font-size: 13px;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+    .intro {
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-block: 48px;
+    }
+
+    .logo-area {
+        max-width: 420px;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header,
+    main,
+    footer {
+        width: min(100% - 32px, 1040px);
+    }
+
+    .site-header {
+        padding-inline: 16px;
+        min-height: 68px;
+    }
+
+    nav {
+        gap: 14px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .mission,
+    .contact {
+        padding: 25px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .site-header {
+        transition: none;
+    }
+}
