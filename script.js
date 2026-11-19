@@ -14,3 +14,21 @@ window.addEventListener("scroll", () => {
 
     previousScrollY = currentScrollY;
 }, { passive: true });
+
+const donationAmount = document.querySelector("#donation-amount");
+
+if (donationAmount instanceof HTMLInputElement) {
+    document.querySelectorAll("[data-amount-adjust]").forEach((button) => {
+        button.addEventListener("click", () => {
+            const min = Number(donationAmount.min);
+            const adjustment = Number(button.dataset.amountAdjust);
+            const current = donationAmount.value === "" ? min : Number(donationAmount.value);
+
+            if (!Number.isFinite(min) || !Number.isFinite(current) || !Number.isFinite(adjustment)) return;
+
+            const next = donationAmount.value === "" ? min : Math.max(min, current + adjustment);
+            donationAmount.value = next.toFixed(2);
+            donationAmount.dispatchEvent(new Event("input", { bubbles: true }));
+        });
+    });
+}
