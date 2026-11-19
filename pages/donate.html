@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A demonstration donation form for the Carfe Care class project.">
+    <title>Carfe Care | Donate</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="../assets/CarfeCareLogo.png">
+</head>
+<body>
+    <header class="site-header">
+        <a class="site-name" href="../index.html">
+            <img class="site-logo" src="../assets/CarfeCareLogo.jpg" alt="" width="44" height="44">
+            <span>Carfe Care</span>
+        </a>
+        <nav aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#about">About Us</a>
+            <a href="programs.html">Programs</a>
+            <a href="../index.html#mission">Our mission</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-content donation-page">
+            <p class="eyebrow">Donate</p>
+            <h1>Support Carfe Care</h1>
+            <p class="contact-intro">
+                Your generosity can help make compassionate care more accessible.
+            </p>
+
+            <p class="donation-notice" role="note">
+                Demo only: this form does not process a donation or send or save your information.
+                Please do not enter real personal or payment details.
+            </p>
+
+            <form class="donation-form" action="no.html" method="get" autocomplete="off">
+                <div class="form-field">
+                    <label for="donation-amount">Donation amount (USD)</label>
+                    <div class="donation-amount-control">
+                        <span class="donation-currency-symbol" aria-hidden="true">$</span>
+                        <input id="donation-amount" type="number" min="1" step="0.01" placeholder="0.00" required>
+                        <div class="donation-stepper" aria-label="Adjust donation amount">
+                            <button type="button" aria-label="Increase amount by one dollar" data-amount-adjust="1">↑</button>
+                            <button type="button" aria-label="Decrease amount by one dollar" data-amount-adjust="-1">↓</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="donor-name">Name</label>
+                    <input id="donor-name" type="text" required>
+                </div>
+                <div class="form-field">
+                    <label for="donor-email">Email</label>
+                    <input id="donor-email" type="email" placeholder="A invoice will be sent to this address." required>
+                </div>
+                <button class="button" type="submit">Donate</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Carfe Care · Sponsored by <a href="https://shelikesbutter.mystrikingly.com/" target="_blank">She Likes Butter</a> 
+            & <a href="pages/idk.html">Cash Hunt of Breast Cancer</a></p>
+    </footer>
+</body>
+</html>
