@@ -15,6 +15,40 @@ window.addEventListener("scroll", () => {
     previousScrollY = currentScrollY;
 }, { passive: true });
 
+const menuButton = document.querySelector(".nav-toggle");
+const mainNavigation = document.querySelector("#main-navigation");
+
+if (siteHeader && menuButton && mainNavigation) {
+    const closeNavigation = () => {
+        menuButton.setAttribute("aria-expanded", "false");
+        mainNavigation.classList.remove("is-open");
+    };
+
+    menuButton.addEventListener("click", () => {
+        const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+        menuButton.setAttribute("aria-expanded", String(!isExpanded));
+        mainNavigation.classList.toggle("is-open", !isExpanded);
+    });
+
+    mainNavigation.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeNavigation);
+    });
+
+    document.addEventListener("click", (event) => {
+        if (event.target instanceof Node && !siteHeader.contains(event.target)) {
+            closeNavigation();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeNavigation();
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 700) closeNavigation();
+    });
+}
+
 const donationAmount = document.querySelector("#donation-amount");
 
 if (donationAmount instanceof HTMLInputElement) {

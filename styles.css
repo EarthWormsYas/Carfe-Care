@@ -67,6 +67,7 @@ section[id] {
     font-size: 18px;
     font-weight: 700;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .site-logo {
@@ -89,6 +90,41 @@ nav a {
 
 nav a:hover {
     color: var(--color-primary);
+}
+
+.nav-toggle {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 11px;
+    border: 1px solid #b8bec3;
+    border-radius: 5px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+}
+
+.nav-toggle:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.nav-toggle-icon {
+    position: relative;
+    width: 18px;
+    height: 12px;
+    border-block: 2px solid currentColor;
+}
+
+.nav-toggle-icon::after {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    left: 0;
+    border-top: 2px solid currentColor;
+    content: "";
 }
 
 .intro {
@@ -259,6 +295,13 @@ h1 {
 .program-card p {
     margin-bottom: 0;
     color: var(--color-muted);
+}
+
+.page-content > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
 }
 
 .contact-intro {
@@ -455,6 +498,47 @@ footer p {
 }
 
 @media (max-width: 700px) {
+    .site-header {
+        width: 100%;
+        min-height: 68px;
+        padding-inline: max(16px, calc((100% - 1040px) / 2));
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+    }
+
+    .site-header > nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        display: none;
+        max-height: calc(100vh - 68px);
+        flex-direction: column;
+        gap: 0;
+        overflow-y: auto;
+        padding: 8px 16px 12px;
+        border-bottom: 1px solid #cbd0d4;
+        background: var(--color-background);
+        box-shadow: 0 4px 8px rgb(41 46 51 / 8%);
+    }
+
+    .site-header > nav.is-open {
+        display: flex;
+    }
+
+    .site-header > nav a {
+        padding: 10px 12px;
+        border-radius: 4px;
+        font-size: 15px;
+    }
+
+    .site-header > nav a:hover,
+    .site-header > nav a:focus-visible {
+        background: var(--color-surface);
+    }
+
     .intro {
         min-height: 0;
         grid-template-columns: 1fr;
@@ -474,23 +558,15 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    .site-header,
     main,
     footer {
         width: min(100% - 32px, 1040px);
     }
 
     .site-header {
+        width: 100%;
         padding-inline: 16px;
         min-height: 68px;
-    }
-
-    nav {
-        gap: 14px;
-    }
-
-    nav a {
-        font-size: 13px;
     }
 
     .about,
